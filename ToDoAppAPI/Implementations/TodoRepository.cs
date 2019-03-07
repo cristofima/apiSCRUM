@@ -7,6 +7,7 @@ namespace ToDoAppAPI.Implementations
     {
         public TodoRepository(SCRUMContext Context) : base(Context)
         {
+           
         }
     }
 }

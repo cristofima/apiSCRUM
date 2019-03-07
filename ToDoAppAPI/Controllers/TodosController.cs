@@ -34,6 +34,11 @@ namespace ToDoAppAPI.Controllers
         [HttpPost]
         public IActionResult CreateTodo(Todo todo)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             this.TodoRepository.Add(todo);
             this.TodoRepository.Save();
 
@@ -43,6 +48,11 @@ namespace ToDoAppAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateTodo(int id, Todo todoParam)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var todo = this.TodoRepository.GetById(id);
             if (todo == null)
             {
